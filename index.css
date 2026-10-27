@@ -2801,9 +2801,22 @@ h2 {
   border-radius: 1rem;
 }
 
+/* Weby: tři široké náhledy přes celou šířku */
+.web-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.web-grid .video-thumb {
+  aspect-ratio: 16 / 10;
+}
+
 @media only screen and (max-width: 1000px) {
   .video-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .web-grid {
+    grid-template-columns: 1fr;
   }
 }
 
