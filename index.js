@@ -121,3 +121,42 @@ document.querySelectorAll("[data-open]").forEach((btn) => {
     if (e.target === dialog) dialog.close();
   });
 });
+
+// Hamburger tlačítko se objeví, jakmile se doscrolluje na úroveň .portfolio
+const menuWrap = document.querySelector(".menu-wrap");
+const portfolio = document.querySelector(".portfolio");
+function updateMenuButton() {
+  const visible = portfolio.getBoundingClientRect().top <= 0;
+  menuWrap.classList.toggle("visible", visible);
+}
+window.addEventListener("scroll", updateMenuButton, { passive: true });
+window.addEventListener("resize", updateMenuButton);
+updateMenuButton();
+
+// Rozbalovací menu: otevře se tlačítkem, zavře klikem na odkaz, mimo menu nebo Esc
+const menuToggle = menuWrap.querySelector(".menu-toggle");
+const menuPanel = document.getElementById("menu-panel");
+function setMenu(open) {
+  menuPanel.hidden = !open;
+  menuToggle.setAttribute("aria-expanded", String(open));
+}
+menuToggle.addEventListener("click", () => setMenu(menuPanel.hidden));
+menuPanel.addEventListener("click", (e) => {
+  if (e.target.closest("a")) setMenu(false);
+});
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".menu-wrap, .menu-panel")) setMenu(false);
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") setMenu(false);
+});
+// při návratu nahoru (tlačítko zmizí) se menu zavře
+window.addEventListener("scroll", () => {
+  if (!menuWrap.classList.contains("visible")) setMenu(false);
+}, { passive: true });
+
+// Tlačítko "nahoru" v menu vrátí na začátek stránky
+document.getElementById("to-top").addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  setMenu(false);
+});

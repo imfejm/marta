@@ -14,7 +14,45 @@
   </head>
   <body>
     <canvas id="dots"></canvas>
-    
+
+    <div class="button-wrap menu-wrap">
+      <button
+        type="button"
+        class="button menu-toggle"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="menu-panel"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+      <div class="button-shadow"></div>
+    </div>
+
+    <nav class="menu-panel" id="menu-panel" hidden>
+      <div class="button-wrap">
+        <a href="#text" class="button">texty + copywriting</a>
+        <div class="button-shadow"></div>
+      </div>
+      <div class="button-wrap">
+        <a href="#photo" class="button">fotky + postprodukce</a>
+        <div class="button-shadow"></div>
+      </div>
+      <div class="button-wrap">
+        <a href="#video" class="button">videoobsah pro SoMe</a>
+        <div class="button-shadow"></div>
+      </div>
+      <div class="button-wrap">
+        <a href="#web" class="button">tvorba webů</a>
+        <div class="button-shadow"></div>
+      </div>
+      <div class="button-wrap">
+        <button type="button" class="button" id="to-top">nahoru</button>
+        <div class="button-shadow"></div>
+      </div>
+    </nav>
+
     <div class="titleMenu">
       <img src="img/test.png" alt="Marta" class="marta-image" />
 
@@ -93,70 +131,36 @@
           </p>
         </div>
       </div>
-    
-    <div class="photo" id="photo">
-      <h2>fotky + postprodukce</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere explicabo ipsam voluptatibus, aspernatur voluptas velit neque quae quam accusantium corporis aperiam doloremque culpa totam! Est unde quia numquam quis nihil culpa voluptates provident voluptatum aspernatur placeat reiciendis ut quisquam temporibus, consequuntur quas ea ex, nobis repellat, ratione laudantium eligendi optio!</p>
-      <div class="gallery">
-        <div class="gallery-item">
-          <!-- Náhled (malé soubory) + tlačítko pro zvětšení -->
-          <div class="compare compare-small" style="--pos: 50%">
-            <img
-              class="compare-img"
-              src="img/MlynMPO.webp"
-              alt="Fotografie po úpravě"
-              width="500"
-              height="375"
-              loading="lazy"
-            />
-            <img
-              class="compare-img compare-before"
-              src="img/MlynMPRED.webp"
-              alt="Fotografie před úpravou"
-              width="500"
-              height="375"
-              loading="lazy"
-            />
-            <span class="compare-label compare-label-before">před</span>
-            <span class="compare-label compare-label-after">po</span>
-            <div class="compare-handle" aria-hidden="true"></div>
-            <input
-              class="compare-range"
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-              aria-label="Porovnání před a po úpravě"
-            />
-            <button
-              class="compare-zoom"
-              type="button"
-              data-open="mlyn"
-              aria-label="Zvětšit porovnání"
-            >
-              ⤢
-            </button>
-          </div>
 
-          <!-- Zvětšená verze; velké soubory se stáhnou až po kliknutí -->
-          <dialog class="lightbox" id="mlyn">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">
-              ✕
-            </button>
-            <div class="compare" style="--pos: 50%">
+      <div class="photo" id="photo">
+        <h2>fotky + postprodukce</h2>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
+          explicabo ipsam voluptatibus, aspernatur voluptas velit neque quae
+          quam accusantium corporis aperiam doloremque culpa totam! Est unde
+          quia numquam quis nihil culpa voluptates provident voluptatum
+          aspernatur placeat reiciendis ut quisquam temporibus, consequuntur
+          quas ea ex, nobis repellat, ratione laudantium eligendi optio!
+        </p>
+        <div class="gallery">
+          <div class="gallery-item">
+            <!-- Náhled (malé soubory) + tlačítko pro zvětšení -->
+            <div class="compare compare-small" style="--pos: 50%">
               <img
                 class="compare-img"
-                data-src="img/MlynV.webp"
+                src="img/MlynMPO.webp"
                 alt="Fotografie po úpravě"
-                width="2000"
-                height="1500"
+                width="500"
+                height="375"
+                loading="lazy"
               />
               <img
                 class="compare-img compare-before"
-                data-src="img/MlynVPRED.webp"
+                src="img/MlynMPRED.webp"
                 alt="Fotografie před úpravou"
-                width="2000"
-                height="1500"
+                width="500"
+                height="375"
+                loading="lazy"
               />
               <span class="compare-label compare-label-before">před</span>
               <span class="compare-label compare-label-after">po</span>
@@ -169,67 +173,220 @@
                 value="50"
                 aria-label="Porovnání před a po úpravě"
               />
+              <button
+                class="compare-zoom"
+                type="button"
+                data-open="mlyn"
+                aria-label="Zvětšit porovnání"
+              >
+                ⤢
+              </button>
             </div>
-          </dialog>
+
+            <!-- Zvětšená verze; velké soubory se stáhnou až po kliknutí -->
+            <dialog class="lightbox" id="mlyn">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <div class="compare" style="--pos: 50%">
+                <img
+                  class="compare-img"
+                  data-src="img/MlynV.webp"
+                  alt="Fotografie po úpravě"
+                  width="2000"
+                  height="1500"
+                />
+                <img
+                  class="compare-img compare-before"
+                  data-src="img/MlynVPRED.webp"
+                  alt="Fotografie před úpravou"
+                  width="2000"
+                  height="1500"
+                />
+                <span class="compare-label compare-label-before">před</span>
+                <span class="compare-label compare-label-after">po</span>
+                <div class="compare-handle" aria-hidden="true"></div>
+                <input
+                  class="compare-range"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  aria-label="Porovnání před a po úpravě"
+                />
+              </div>
+            </dialog>
+          </div>
+
+          <div class="gallery-item">
+            <div class="compare compare-small" style="--pos: 50%">
+              <img
+                class="compare-img"
+                src="img/ZedMPO.webp"
+                alt="Fotografie po úpravě"
+                width="500"
+                height="375"
+                loading="lazy"
+              />
+              <img
+                class="compare-img compare-before"
+                src="img/ZedMPRED.webp"
+                alt="Fotografie před úpravou"
+                width="500"
+                height="375"
+                loading="lazy"
+              />
+              <span class="compare-label compare-label-before">před</span>
+              <span class="compare-label compare-label-after">po</span>
+              <div class="compare-handle" aria-hidden="true"></div>
+              <input
+                class="compare-range"
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+                aria-label="Porovnání před a po úpravě"
+              />
+              <button
+                class="compare-zoom"
+                type="button"
+                data-open="zed"
+                aria-label="Zvětšit porovnání"
+              >
+                ⤢
+              </button>
+            </div>
+
+            <dialog class="lightbox" id="zed">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <div class="compare" style="--pos: 50%">
+                <img
+                  class="compare-img"
+                  data-src="img/ZedVPO.webp"
+                  alt="Fotografie po úpravě"
+                  width="2000"
+                  height="1500"
+                />
+                <img
+                  class="compare-img compare-before"
+                  data-src="img/ZedVPRED.webp"
+                  alt="Fotografie před úpravou"
+                  width="2000"
+                  height="1500"
+                />
+                <span class="compare-label compare-label-before">před</span>
+                <span class="compare-label compare-label-after">po</span>
+                <div class="compare-handle" aria-hidden="true"></div>
+                <input
+                  class="compare-range"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  aria-label="Porovnání před a po úpravě"
+                />
+              </div>
+            </dialog>
+          </div>
+
+          <div class="gallery-item">
+            <div class="compare compare-small" style="--pos: 50%">
+              <img
+                class="compare-img"
+                src="img/StromMPO.webp"
+                alt="Fotografie po úpravě"
+                width="500"
+                height="375"
+                loading="lazy"
+              />
+              <img
+                class="compare-img compare-before"
+                src="img/StromMPRED.webp"
+                alt="Fotografie před úpravou"
+                width="500"
+                height="375"
+                loading="lazy"
+              />
+              <span class="compare-label compare-label-before">před</span>
+              <span class="compare-label compare-label-after">po</span>
+              <div class="compare-handle" aria-hidden="true"></div>
+              <input
+                class="compare-range"
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+                aria-label="Porovnání před a po úpravě"
+              />
+              <button
+                class="compare-zoom"
+                type="button"
+                data-open="strom"
+                aria-label="Zvětšit porovnání"
+              >
+                ⤢
+              </button>
+            </div>
+
+            <dialog class="lightbox" id="strom">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <div class="compare" style="--pos: 50%">
+                <img
+                  class="compare-img"
+                  data-src="img/StromVPO.webp"
+                  alt="Fotografie po úpravě"
+                  width="2000"
+                  height="1500"
+                />
+                <img
+                  class="compare-img compare-before"
+                  data-src="img/StromVPRED.webp"
+                  alt="Fotografie před úpravou"
+                  width="2000"
+                  height="1500"
+                />
+                <span class="compare-label compare-label-before">před</span>
+                <span class="compare-label compare-label-after">po</span>
+                <div class="compare-handle" aria-hidden="true"></div>
+                <input
+                  class="compare-range"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  aria-label="Porovnání před a po úpravě"
+                />
+              </div>
+            </dialog>
+          </div>
         </div>
 
-        <div class="gallery-item">
-          <div class="compare compare-small" style="--pos: 50%">
-            <img
-              class="compare-img"
-              src="img/ZedMPO.webp"
-              alt="Fotografie po úpravě"
-              width="500"
-              height="375"
-              loading="lazy"
-            />
-            <img
-              class="compare-img compare-before"
-              src="img/ZedMPRED.webp"
-              alt="Fotografie před úpravou"
-              width="500"
-              height="375"
-              loading="lazy"
-            />
-            <span class="compare-label compare-label-before">před</span>
-            <span class="compare-label compare-label-after">po</span>
-            <div class="compare-handle" aria-hidden="true"></div>
-            <input
-              class="compare-range"
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-              aria-label="Porovnání před a po úpravě"
-            />
-            <button
-              class="compare-zoom"
-              type="button"
-              data-open="zed"
-              aria-label="Zvětšit porovnání"
+        <!-- Fotky na výšku: 5 vedle sebe -->
+        <div class="gallery gallery-portrait">
+          <div class="gallery-item">
+            <div
+              class="compare compare-small compare-portrait"
+              style="--pos: 50%"
             >
-              ⤢
-            </button>
-          </div>
-
-          <dialog class="lightbox" id="zed">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">
-              ✕
-            </button>
-            <div class="compare" style="--pos: 50%">
               <img
                 class="compare-img"
-                data-src="img/ZedVPO.webp"
+                src="img/DetiMPO.webp"
                 alt="Fotografie po úpravě"
-                width="2000"
-                height="1500"
+                width="480"
+                height="600"
+                loading="lazy"
               />
               <img
                 class="compare-img compare-before"
-                data-src="img/ZedVPRED.webp"
+                src="img/DetiMPRED.webp"
                 alt="Fotografie před úpravou"
-                width="2000"
-                height="1500"
+                width="480"
+                height="600"
+                loading="lazy"
               />
               <span class="compare-label compare-label-before">před</span>
               <span class="compare-label compare-label-after">po</span>
@@ -242,67 +399,70 @@
                 value="50"
                 aria-label="Porovnání před a po úpravě"
               />
+              <button
+                class="compare-zoom"
+                type="button"
+                data-open="deti"
+                aria-label="Zvětšit porovnání"
+              >
+                ⤢
+              </button>
             </div>
-          </dialog>
-        </div>
 
-        <div class="gallery-item">
-          <div class="compare compare-small" style="--pos: 50%">
-            <img
-              class="compare-img"
-              src="img/StromMPO.webp"
-              alt="Fotografie po úpravě"
-              width="500"
-              height="375"
-              loading="lazy"
-            />
-            <img
-              class="compare-img compare-before"
-              src="img/StromMPRED.webp"
-              alt="Fotografie před úpravou"
-              width="500"
-              height="375"
-              loading="lazy"
-            />
-            <span class="compare-label compare-label-before">před</span>
-            <span class="compare-label compare-label-after">po</span>
-            <div class="compare-handle" aria-hidden="true"></div>
-            <input
-              class="compare-range"
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-              aria-label="Porovnání před a po úpravě"
-            />
-            <button
-              class="compare-zoom"
-              type="button"
-              data-open="strom"
-              aria-label="Zvětšit porovnání"
-            >
-              ⤢
-            </button>
+            <dialog class="lightbox lightbox-portrait" id="deti">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <div class="compare compare-portrait" style="--pos: 50%">
+                <img
+                  class="compare-img"
+                  data-src="img/DetiVPO.webp"
+                  alt="Fotografie po úpravě"
+                  width="1080"
+                  height="1350"
+                />
+                <img
+                  class="compare-img compare-before"
+                  data-src="img/DetiVPRED.webp"
+                  alt="Fotografie před úpravou"
+                  width="1080"
+                  height="1350"
+                />
+                <span class="compare-label compare-label-before">před</span>
+                <span class="compare-label compare-label-after">po</span>
+                <div class="compare-handle" aria-hidden="true"></div>
+                <input
+                  class="compare-range"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  aria-label="Porovnání před a po úpravě"
+                />
+              </div>
+            </dialog>
           </div>
 
-          <dialog class="lightbox" id="strom">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">
-              ✕
-            </button>
-            <div class="compare" style="--pos: 50%">
+          <div class="gallery-item">
+            <div
+              class="compare compare-small compare-portrait"
+              style="--pos: 50%"
+            >
               <img
                 class="compare-img"
-                data-src="img/StromVPO.webp"
+                src="img/KostelMPO.webp"
                 alt="Fotografie po úpravě"
-                width="2000"
-                height="1500"
+                width="480"
+                height="600"
+                loading="lazy"
               />
               <img
                 class="compare-img compare-before"
-                data-src="img/StromVPRED.webp"
+                src="img/KostelMPRED.webp"
                 alt="Fotografie před úpravou"
-                width="2000"
-                height="1500"
+                width="480"
+                height="600"
+                loading="lazy"
               />
               <span class="compare-label compare-label-before">před</span>
               <span class="compare-label compare-label-after">po</span>
@@ -315,507 +475,536 @@
                 value="50"
                 aria-label="Porovnání před a po úpravě"
               />
+              <button
+                class="compare-zoom"
+                type="button"
+                data-open="kostel"
+                aria-label="Zvětšit porovnání"
+              >
+                ⤢
+              </button>
             </div>
-          </dialog>
+
+            <dialog class="lightbox lightbox-portrait" id="kostel">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <div class="compare compare-portrait" style="--pos: 50%">
+                <img
+                  class="compare-img"
+                  data-src="img/KostelVPO.webp"
+                  alt="Fotografie po úpravě"
+                  width="1080"
+                  height="1350"
+                />
+                <img
+                  class="compare-img compare-before"
+                  data-src="img/KostelVPRED.webp"
+                  alt="Fotografie před úpravou"
+                  width="1080"
+                  height="1350"
+                />
+                <span class="compare-label compare-label-before">před</span>
+                <span class="compare-label compare-label-after">po</span>
+                <div class="compare-handle" aria-hidden="true"></div>
+                <input
+                  class="compare-range"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  aria-label="Porovnání před a po úpravě"
+                />
+              </div>
+            </dialog>
+          </div>
+
+          <div class="gallery-item">
+            <div
+              class="compare compare-small compare-portrait"
+              style="--pos: 50%"
+            >
+              <img
+                class="compare-img"
+                src="img/TunelMPO.webp"
+                alt="Fotografie po úpravě"
+                width="480"
+                height="600"
+                loading="lazy"
+              />
+              <img
+                class="compare-img compare-before"
+                src="img/TunelMPRED.webp"
+                alt="Fotografie před úpravou"
+                width="480"
+                height="600"
+                loading="lazy"
+              />
+              <span class="compare-label compare-label-before">před</span>
+              <span class="compare-label compare-label-after">po</span>
+              <div class="compare-handle" aria-hidden="true"></div>
+              <input
+                class="compare-range"
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+                aria-label="Porovnání před a po úpravě"
+              />
+              <button
+                class="compare-zoom"
+                type="button"
+                data-open="tunel"
+                aria-label="Zvětšit porovnání"
+              >
+                ⤢
+              </button>
+            </div>
+
+            <dialog class="lightbox lightbox-portrait" id="tunel">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <div class="compare compare-portrait" style="--pos: 50%">
+                <img
+                  class="compare-img"
+                  data-src="img/TunelVPO.webp"
+                  alt="Fotografie po úpravě"
+                  width="1080"
+                  height="1350"
+                />
+                <img
+                  class="compare-img compare-before"
+                  data-src="img/TunelVPRED.webp"
+                  alt="Fotografie před úpravou"
+                  width="1080"
+                  height="1350"
+                />
+                <span class="compare-label compare-label-before">před</span>
+                <span class="compare-label compare-label-after">po</span>
+                <div class="compare-handle" aria-hidden="true"></div>
+                <input
+                  class="compare-range"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  aria-label="Porovnání před a po úpravě"
+                />
+              </div>
+            </dialog>
+          </div>
+
+          <div class="gallery-item">
+            <div
+              class="compare compare-small compare-portrait"
+              style="--pos: 50%"
+            >
+              <img
+                class="compare-img"
+                src="img/RodinaMPO.webp"
+                alt="Fotografie po úpravě"
+                width="480"
+                height="600"
+                loading="lazy"
+              />
+              <img
+                class="compare-img compare-before"
+                src="img/RodinaMPRED.webp"
+                alt="Fotografie před úpravou"
+                width="480"
+                height="600"
+                loading="lazy"
+              />
+              <span class="compare-label compare-label-before">před</span>
+              <span class="compare-label compare-label-after">po</span>
+              <div class="compare-handle" aria-hidden="true"></div>
+              <input
+                class="compare-range"
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+                aria-label="Porovnání před a po úpravě"
+              />
+              <button
+                class="compare-zoom"
+                type="button"
+                data-open="rodina"
+                aria-label="Zvětšit porovnání"
+              >
+                ⤢
+              </button>
+            </div>
+
+            <dialog class="lightbox lightbox-portrait" id="rodina">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <div class="compare compare-portrait" style="--pos: 50%">
+                <img
+                  class="compare-img"
+                  data-src="img/RodinaVPO.webp"
+                  alt="Fotografie po úpravě"
+                  width="1080"
+                  height="1350"
+                />
+                <img
+                  class="compare-img compare-before"
+                  data-src="img/RodinaVPRED.webp"
+                  alt="Fotografie před úpravou"
+                  width="1080"
+                  height="1350"
+                />
+                <span class="compare-label compare-label-before">před</span>
+                <span class="compare-label compare-label-after">po</span>
+                <div class="compare-handle" aria-hidden="true"></div>
+                <input
+                  class="compare-range"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  aria-label="Porovnání před a po úpravě"
+                />
+              </div>
+            </dialog>
+          </div>
+
+          <div class="gallery-item">
+            <div
+              class="compare compare-small compare-portrait"
+              style="--pos: 50%"
+            >
+              <img
+                class="compare-img"
+                src="img/GdanskMPO.webp"
+                alt="Fotografie po úpravě"
+                width="480"
+                height="600"
+                loading="lazy"
+              />
+              <img
+                class="compare-img compare-before"
+                src="img/GdanskMPRED.webp"
+                alt="Fotografie před úpravou"
+                width="480"
+                height="600"
+                loading="lazy"
+              />
+              <span class="compare-label compare-label-before">před</span>
+              <span class="compare-label compare-label-after">po</span>
+              <div class="compare-handle" aria-hidden="true"></div>
+              <input
+                class="compare-range"
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+                aria-label="Porovnání před a po úpravě"
+              />
+              <button
+                class="compare-zoom"
+                type="button"
+                data-open="gdansk"
+                aria-label="Zvětšit porovnání"
+              >
+                ⤢
+              </button>
+            </div>
+
+            <dialog class="lightbox lightbox-portrait" id="gdansk">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <div class="compare compare-portrait" style="--pos: 50%">
+                <img
+                  class="compare-img"
+                  data-src="img/GdanskVPO.webp"
+                  alt="Fotografie po úpravě"
+                  width="1080"
+                  height="1350"
+                />
+                <img
+                  class="compare-img compare-before"
+                  data-src="img/GdanskVPRED.webp"
+                  alt="Fotografie před úpravou"
+                  width="1080"
+                  height="1350"
+                />
+                <span class="compare-label compare-label-before">před</span>
+                <span class="compare-label compare-label-after">po</span>
+                <div class="compare-handle" aria-hidden="true"></div>
+                <input
+                  class="compare-range"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  aria-label="Porovnání před a po úpravě"
+                />
+              </div>
+            </dialog>
+          </div>
         </div>
       </div>
-
-      <!-- Fotky na výšku: 5 vedle sebe -->
-      <div class="gallery gallery-portrait">
-        <div class="gallery-item">
-          <div
-            class="compare compare-small compare-portrait"
-            style="--pos: 50%"
-          >
-            <img
-              class="compare-img"
-              src="img/DetiMPO.webp"
-              alt="Fotografie po úpravě"
-              width="480"
-              height="600"
-              loading="lazy"
-            />
-            <img
-              class="compare-img compare-before"
-              src="img/DetiMPRED.webp"
-              alt="Fotografie před úpravou"
-              width="480"
-              height="600"
-              loading="lazy"
-            />
-            <span class="compare-label compare-label-before">před</span>
-            <span class="compare-label compare-label-after">po</span>
-            <div class="compare-handle" aria-hidden="true"></div>
-            <input
-              class="compare-range"
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-              aria-label="Porovnání před a po úpravě"
-            />
+      <div class="video" id="video">
+        <h2>videoobsah pro sociální sítě</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus ducimus
+          repudiandae, fuga est cumque neque perspiciatis, consectetur
+          voluptatibus nisi, dicta laudantium necessitatibus explicabo mollitia
+          adipisci commodi tempora asperiores sit repellat ad magnam animi
+          reiciendis quod. Exercitationem at possimus vel ab voluptatem quidem
+          ipsam ipsa sequi quisquam! Et fugiat debitis iusto.
+        </p>
+        <div class="video-grid">
+          <figure class="video-card">
             <button
-              class="compare-zoom"
+              class="video-thumb"
               type="button"
-              data-open="deti"
-              aria-label="Zvětšit porovnání"
+              data-open="v-houbari"
+              aria-label="Přehrát video: Houbari"
             >
-              ⤢
+              <video
+                src="img/Houbari.mp4#t=0.5"
+                preload="metadata"
+                muted
+                playsinline
+              ></video>
+              <span class="video-play" aria-hidden="true">▶</span>
             </button>
-          </div>
-
-          <dialog class="lightbox lightbox-portrait" id="deti">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">
-              ✕
-            </button>
-            <div class="compare compare-portrait" style="--pos: 50%">
-              <img
-                class="compare-img"
-                data-src="img/DetiVPO.webp"
-                alt="Fotografie po úpravě"
-                width="1080"
-                height="1350"
-              />
-              <img
-                class="compare-img compare-before"
-                data-src="img/DetiVPRED.webp"
-                alt="Fotografie před úpravou"
-                width="1080"
-                height="1350"
-              />
-              <span class="compare-label compare-label-before">před</span>
-              <span class="compare-label compare-label-after">po</span>
-              <div class="compare-handle" aria-hidden="true"></div>
-              <input
-                class="compare-range"
-                type="range"
-                min="0"
-                max="100"
-                value="50"
-                aria-label="Porovnání před a po úpravě"
-              />
-            </div>
-          </dialog>
-        </div>
-
-        <div class="gallery-item">
-          <div
-            class="compare compare-small compare-portrait"
-            style="--pos: 50%"
-          >
-            <img
-              class="compare-img"
-              src="img/KostelMPO.webp"
-              alt="Fotografie po úpravě"
-              width="480"
-              height="600"
-              loading="lazy"
-            />
-            <img
-              class="compare-img compare-before"
-              src="img/KostelMPRED.webp"
-              alt="Fotografie před úpravou"
-              width="480"
-              height="600"
-              loading="lazy"
-            />
-            <span class="compare-label compare-label-before">před</span>
-            <span class="compare-label compare-label-after">po</span>
-            <div class="compare-handle" aria-hidden="true"></div>
-            <input
-              class="compare-range"
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-              aria-label="Porovnání před a po úpravě"
-            />
+            <figcaption>
+              <strong>Houbari</strong>
+              Krátký popisek videa. Druhá věta popisku, doplň vlastní text.
+            </figcaption>
+            <dialog class="lightbox lightbox-video" id="v-houbari">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <video
+                data-src="img/Houbari.mp4"
+                controls
+                playsinline
+                preload="none"
+              ></video>
+            </dialog>
+          </figure>
+          <figure class="video-card">
             <button
-              class="compare-zoom"
+              class="video-thumb"
               type="button"
-              data-open="kostel"
-              aria-label="Zvětšit porovnání"
+              data-open="v-exovideo"
+              aria-label="Přehrát video: Exovideo"
             >
-              ⤢
+              <video
+                src="img/Exovideo.mp4#t=0.5"
+                preload="metadata"
+                muted
+                playsinline
+              ></video>
+              <span class="video-play" aria-hidden="true">▶</span>
             </button>
-          </div>
-
-          <dialog class="lightbox lightbox-portrait" id="kostel">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">
-              ✕
-            </button>
-            <div class="compare compare-portrait" style="--pos: 50%">
-              <img
-                class="compare-img"
-                data-src="img/KostelVPO.webp"
-                alt="Fotografie po úpravě"
-                width="1080"
-                height="1350"
-              />
-              <img
-                class="compare-img compare-before"
-                data-src="img/KostelVPRED.webp"
-                alt="Fotografie před úpravou"
-                width="1080"
-                height="1350"
-              />
-              <span class="compare-label compare-label-before">před</span>
-              <span class="compare-label compare-label-after">po</span>
-              <div class="compare-handle" aria-hidden="true"></div>
-              <input
-                class="compare-range"
-                type="range"
-                min="0"
-                max="100"
-                value="50"
-                aria-label="Porovnání před a po úpravě"
-              />
-            </div>
-          </dialog>
-        </div>
-
-        <div class="gallery-item">
-          <div
-            class="compare compare-small compare-portrait"
-            style="--pos: 50%"
-          >
-            <img
-              class="compare-img"
-              src="img/TunelMPO.webp"
-              alt="Fotografie po úpravě"
-              width="480"
-              height="600"
-              loading="lazy"
-            />
-            <img
-              class="compare-img compare-before"
-              src="img/TunelMPRED.webp"
-              alt="Fotografie před úpravou"
-              width="480"
-              height="600"
-              loading="lazy"
-            />
-            <span class="compare-label compare-label-before">před</span>
-            <span class="compare-label compare-label-after">po</span>
-            <div class="compare-handle" aria-hidden="true"></div>
-            <input
-              class="compare-range"
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-              aria-label="Porovnání před a po úpravě"
-            />
+            <figcaption>
+              <strong>Exovideo</strong>
+              Krátký popisek videa. Druhá věta popisku, doplň vlastní text.
+            </figcaption>
+            <dialog class="lightbox lightbox-video" id="v-exovideo">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <video
+                data-src="img/Exovideo.mp4"
+                controls
+                playsinline
+                preload="none"
+              ></video>
+            </dialog>
+          </figure>
+          <figure class="video-card">
             <button
-              class="compare-zoom"
+              class="video-thumb"
               type="button"
-              data-open="tunel"
-              aria-label="Zvětšit porovnání"
+              data-open="v-reka"
+              aria-label="Přehrát video: Řeka"
             >
-              ⤢
+              <video
+                src="img/Reka.mp4#t=0.5"
+                preload="metadata"
+                muted
+                playsinline
+              ></video>
+              <span class="video-play" aria-hidden="true">▶</span>
             </button>
-          </div>
-
-          <dialog class="lightbox lightbox-portrait" id="tunel">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">
-              ✕
-            </button>
-            <div class="compare compare-portrait" style="--pos: 50%">
-              <img
-                class="compare-img"
-                data-src="img/TunelVPO.webp"
-                alt="Fotografie po úpravě"
-                width="1080"
-                height="1350"
-              />
-              <img
-                class="compare-img compare-before"
-                data-src="img/TunelVPRED.webp"
-                alt="Fotografie před úpravou"
-                width="1080"
-                height="1350"
-              />
-              <span class="compare-label compare-label-before">před</span>
-              <span class="compare-label compare-label-after">po</span>
-              <div class="compare-handle" aria-hidden="true"></div>
-              <input
-                class="compare-range"
-                type="range"
-                min="0"
-                max="100"
-                value="50"
-                aria-label="Porovnání před a po úpravě"
-              />
-            </div>
-          </dialog>
-        </div>
-
-        <div class="gallery-item">
-          <div
-            class="compare compare-small compare-portrait"
-            style="--pos: 50%"
-          >
-            <img
-              class="compare-img"
-              src="img/RodinaMPO.webp"
-              alt="Fotografie po úpravě"
-              width="480"
-              height="600"
-              loading="lazy"
-            />
-            <img
-              class="compare-img compare-before"
-              src="img/RodinaMPRED.webp"
-              alt="Fotografie před úpravou"
-              width="480"
-              height="600"
-              loading="lazy"
-            />
-            <span class="compare-label compare-label-before">před</span>
-            <span class="compare-label compare-label-after">po</span>
-            <div class="compare-handle" aria-hidden="true"></div>
-            <input
-              class="compare-range"
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-              aria-label="Porovnání před a po úpravě"
-            />
+            <figcaption>
+              <strong>Řeka</strong>
+              Krátký popisek videa. Druhá věta popisku, doplň vlastní text.
+            </figcaption>
+            <dialog class="lightbox lightbox-video" id="v-reka">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <video
+                data-src="img/Reka.mp4"
+                controls
+                playsinline
+                preload="none"
+              ></video>
+            </dialog>
+          </figure>
+          <figure class="video-card">
             <button
-              class="compare-zoom"
+              class="video-thumb"
               type="button"
-              data-open="rodina"
-              aria-label="Zvětšit porovnání"
+              data-open="v-vanoce"
+              aria-label="Přehrát video: Vánoce"
             >
-              ⤢
+              <video
+                src="img/Vanoce.mp4#t=0.5"
+                preload="metadata"
+                muted
+                playsinline
+              ></video>
+              <span class="video-play" aria-hidden="true">▶</span>
             </button>
-          </div>
-
-          <dialog class="lightbox lightbox-portrait" id="rodina">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">
-              ✕
-            </button>
-            <div class="compare compare-portrait" style="--pos: 50%">
-              <img
-                class="compare-img"
-                data-src="img/RodinaVPO.webp"
-                alt="Fotografie po úpravě"
-                width="1080"
-                height="1350"
-              />
-              <img
-                class="compare-img compare-before"
-                data-src="img/RodinaVPRED.webp"
-                alt="Fotografie před úpravou"
-                width="1080"
-                height="1350"
-              />
-              <span class="compare-label compare-label-before">před</span>
-              <span class="compare-label compare-label-after">po</span>
-              <div class="compare-handle" aria-hidden="true"></div>
-              <input
-                class="compare-range"
-                type="range"
-                min="0"
-                max="100"
-                value="50"
-                aria-label="Porovnání před a po úpravě"
-              />
-            </div>
-          </dialog>
-        </div>
-
-        <div class="gallery-item">
-          <div
-            class="compare compare-small compare-portrait"
-            style="--pos: 50%"
-          >
-            <img
-              class="compare-img"
-              src="img/GdanskMPO.webp"
-              alt="Fotografie po úpravě"
-              width="480"
-              height="600"
-              loading="lazy"
-            />
-            <img
-              class="compare-img compare-before"
-              src="img/GdanskMPRED.webp"
-              alt="Fotografie před úpravou"
-              width="480"
-              height="600"
-              loading="lazy"
-            />
-            <span class="compare-label compare-label-before">před</span>
-            <span class="compare-label compare-label-after">po</span>
-            <div class="compare-handle" aria-hidden="true"></div>
-            <input
-              class="compare-range"
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-              aria-label="Porovnání před a po úpravě"
-            />
-            <button
-              class="compare-zoom"
-              type="button"
-              data-open="gdansk"
-              aria-label="Zvětšit porovnání"
-            >
-              ⤢
-            </button>
-          </div>
-
-          <dialog class="lightbox lightbox-portrait" id="gdansk">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">
-              ✕
-            </button>
-            <div class="compare compare-portrait" style="--pos: 50%">
-              <img
-                class="compare-img"
-                data-src="img/GdanskVPO.webp"
-                alt="Fotografie po úpravě"
-                width="1080"
-                height="1350"
-              />
-              <img
-                class="compare-img compare-before"
-                data-src="img/GdanskVPRED.webp"
-                alt="Fotografie před úpravou"
-                width="1080"
-                height="1350"
-              />
-              <span class="compare-label compare-label-before">před</span>
-              <span class="compare-label compare-label-after">po</span>
-              <div class="compare-handle" aria-hidden="true"></div>
-              <input
-                class="compare-range"
-                type="range"
-                min="0"
-                max="100"
-                value="50"
-                aria-label="Porovnání před a po úpravě"
-              />
-            </div>
-          </dialog>
+            <figcaption>
+              <strong>Vánoce</strong>
+              Krátký popisek videa. Druhá věta popisku, doplň vlastní text.
+            </figcaption>
+            <dialog class="lightbox lightbox-video" id="v-vanoce">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <video
+                data-src="img/Vanoce.mp4"
+                controls
+                playsinline
+                preload="none"
+              ></video>
+            </dialog>
+          </figure>
         </div>
       </div>
+      <div class="web" id="web">
+        <h2>tvorba webů</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus ducimus
+          repudiandae, fuga est cumque neque perspiciatis, consectetur
+          voluptatibus nisi, dicta laudantium necessitatibus explicabo mollitia
+          adipisci commodi tempora asperiores sit repellat ad magnam animi
+          reiciendis quod. Exercitationem at possimus vel ab voluptatem quidem
+          ipsam ipsa sequi quisquam! Et fugiat debitis iusto.
+        </p>
+        <div class="video-grid web-grid">
+          <figure class="video-card">
+            <button
+              class="video-thumb"
+              type="button"
+              data-open="w-cohraje"
+              aria-label="Přehrát video: Cohraje"
+            >
+              <video
+                src="img/CohrajeWEB.mp4#t=0.5"
+                preload="metadata"
+                muted
+                playsinline
+              ></video>
+              <span class="video-play" aria-hidden="true">▶</span>
+            </button>
+            <figcaption>
+              <strong>Cohraje</strong>
+              Web, který přehledně představuje program a dění na jednom místě.
+              Texty jsou psané srozumitelně a lidsky, aby návštěvník rychle
+              našel, co hledá. Důraz je na jasné členění a snadnou orientaci i
+              na mobilu. Doplň vlastní text o tom, co jsi pro projekt
+              připravila.
+            </figcaption>
+            <dialog class="lightbox lightbox-video" id="w-cohraje">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <video
+                data-src="img/CohrajeWEB.mp4"
+                controls
+                playsinline
+                preload="none"
+              ></video>
+            </dialog>
+          </figure>
+          <figure class="video-card">
+            <button
+              class="video-thumb"
+              type="button"
+              data-open="w-exo"
+              aria-label="Přehrát video: Exo"
+            >
+              <video
+                src="img/ExoWEB.mp4#t=0.5"
+                preload="metadata"
+                muted
+                playsinline
+              ></video>
+              <span class="video-play" aria-hidden="true">▶</span>
+            </button>
+            <figcaption>
+              <strong>Exo</strong>
+              Webová prezentace s důrazem na zřetelné sdělení a působivý první
+              dojem. Texty jsou krátké, údernější a vedou čtenáře k akci.
+              Struktura stránek je jednoduchá, aby se v nich nikdo neztratil.
+              Doplň vlastní text o tom, co jsi pro projekt připravila.
+            </figcaption>
+            <dialog class="lightbox lightbox-video" id="w-exo">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <video
+                data-src="img/ExoWEB.mp4"
+                controls
+                playsinline
+                preload="none"
+              ></video>
+            </dialog>
+          </figure>
+          <figure class="video-card">
+            <button
+              class="video-thumb"
+              type="button"
+              data-open="w-home"
+              aria-label="Přehrát video: Home"
+            >
+              <video
+                src="img/HomeWEB.mp4#t=0.5"
+                preload="metadata"
+                muted
+                playsinline
+              ></video>
+              <span class="video-play" aria-hidden="true">▶</span>
+            </button>
+            <figcaption>
+              <strong>Home</strong>
+              Úvodní stránka, která během pár vteřin vysvětlí, o co jde. Nadpisy
+              a texty jsou psané tak, aby zaujaly a zároveň dobře fungovaly ve
+              vyhledávačích. Celek působí přehledně a nenásilně vede k dalšímu
+              kroku. Doplň vlastní text o tom, co jsi pro projekt připravila.
+            </figcaption>
+            <dialog class="lightbox lightbox-video" id="w-home">
+              <button class="lightbox-close" type="button" aria-label="Zavřít">
+                ✕
+              </button>
+              <video
+                data-src="img/HomeWEB.mp4"
+                controls
+                playsinline
+                preload="none"
+              ></video>
+            </dialog>
+          </figure>
+        </div>
+      </div>
+      
+
+      <div class="dots"></div>
     </div>
-    <div class="video" id="video">
-      <h2>videoobsah pro sociální sítě</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus ducimus repudiandae, fuga est cumque neque perspiciatis, consectetur voluptatibus nisi, dicta laudantium necessitatibus explicabo mollitia adipisci commodi tempora asperiores sit repellat ad magnam animi reiciendis quod. Exercitationem at possimus vel ab voluptatem quidem ipsam ipsa sequi quisquam! Et fugiat debitis iusto.</p>
-      <div class="video-grid">
-        <figure class="video-card">
-          <button class="video-thumb" type="button" data-open="v-houbari" aria-label="Přehrát video: Houbari">
-            <video src="img/Houbari.mp4#t=0.5" preload="metadata" muted playsinline></video>
-            <span class="video-play" aria-hidden="true">▶</span>
-          </button>
-          <figcaption>
-            <strong>Houbari</strong>
-            Krátký popisek videa. Druhá věta popisku, doplň vlastní text.
-          </figcaption>
-          <dialog class="lightbox lightbox-video" id="v-houbari">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">✕</button>
-            <video data-src="img/Houbari.mp4" controls playsinline preload="none"></video>
-          </dialog>
-        </figure>
-        <figure class="video-card">
-          <button class="video-thumb" type="button" data-open="v-exovideo" aria-label="Přehrát video: Exovideo">
-            <video src="img/Exovideo.mp4#t=0.5" preload="metadata" muted playsinline></video>
-            <span class="video-play" aria-hidden="true">▶</span>
-          </button>
-          <figcaption>
-            <strong>Exovideo</strong>
-            Krátký popisek videa. Druhá věta popisku, doplň vlastní text.
-          </figcaption>
-          <dialog class="lightbox lightbox-video" id="v-exovideo">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">✕</button>
-            <video data-src="img/Exovideo.mp4" controls playsinline preload="none"></video>
-          </dialog>
-        </figure>
-        <figure class="video-card">
-          <button class="video-thumb" type="button" data-open="v-reka" aria-label="Přehrát video: Řeka">
-            <video src="img/Reka.mp4#t=0.5" preload="metadata" muted playsinline></video>
-            <span class="video-play" aria-hidden="true">▶</span>
-          </button>
-          <figcaption>
-            <strong>Řeka</strong>
-            Krátký popisek videa. Druhá věta popisku, doplň vlastní text.
-          </figcaption>
-          <dialog class="lightbox lightbox-video" id="v-reka">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">✕</button>
-            <video data-src="img/Reka.mp4" controls playsinline preload="none"></video>
-          </dialog>
-        </figure>
-        <figure class="video-card">
-          <button class="video-thumb" type="button" data-open="v-vanoce" aria-label="Přehrát video: Vánoce">
-            <video src="img/Vanoce.mp4#t=0.5" preload="metadata" muted playsinline></video>
-            <span class="video-play" aria-hidden="true">▶</span>
-          </button>
-          <figcaption>
-            <strong>Vánoce</strong>
-            Krátký popisek videa. Druhá věta popisku, doplň vlastní text.
-          </figcaption>
-          <dialog class="lightbox lightbox-video" id="v-vanoce">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">✕</button>
-            <video data-src="img/Vanoce.mp4" controls playsinline preload="none"></video>
-          </dialog>
-        </figure>
-      </div>
-    </div>
-    <div class="web" id="web">
-      <h2>tvorba webů</h2>
-      <div class="video-grid web-grid">
-        <figure class="video-card">
-          <button class="video-thumb" type="button" data-open="w-cohraje" aria-label="Přehrát video: Cohraje">
-            <video src="img/CohrajeWEB.mp4#t=0.5" preload="metadata" muted playsinline></video>
-            <span class="video-play" aria-hidden="true">▶</span>
-          </button>
-          <figcaption>
-            <strong>Cohraje</strong>
-            Web, který přehledně představuje program a dění na jednom místě. Texty jsou psané srozumitelně a lidsky, aby návštěvník rychle našel, co hledá. Důraz je na jasné členění a snadnou orientaci i na mobilu. Doplň vlastní text o tom, co jsi pro projekt připravila.
-          </figcaption>
-          <dialog class="lightbox lightbox-video" id="w-cohraje">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">✕</button>
-            <video data-src="img/CohrajeWEB.mp4" controls playsinline preload="none"></video>
-          </dialog>
-        </figure>
-        <figure class="video-card">
-          <button class="video-thumb" type="button" data-open="w-exo" aria-label="Přehrát video: Exo">
-            <video src="img/ExoWEB.mp4#t=0.5" preload="metadata" muted playsinline></video>
-            <span class="video-play" aria-hidden="true">▶</span>
-          </button>
-          <figcaption>
-            <strong>Exo</strong>
-            Webová prezentace s důrazem na zřetelné sdělení a působivý první dojem. Texty jsou krátké, údernější a vedou čtenáře k akci. Struktura stránek je jednoduchá, aby se v nich nikdo neztratil. Doplň vlastní text o tom, co jsi pro projekt připravila.
-          </figcaption>
-          <dialog class="lightbox lightbox-video" id="w-exo">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">✕</button>
-            <video data-src="img/ExoWEB.mp4" controls playsinline preload="none"></video>
-          </dialog>
-        </figure>
-        <figure class="video-card">
-          <button class="video-thumb" type="button" data-open="w-home" aria-label="Přehrát video: Home">
-            <video src="img/HomeWEB.mp4#t=0.5" preload="metadata" muted playsinline></video>
-            <span class="video-play" aria-hidden="true">▶</span>
-          </button>
-          <figcaption>
-            <strong>Home</strong>
-            Úvodní stránka, která během pár vteřin vysvětlí, o co jde. Nadpisy a texty jsou psané tak, aby zaujaly a zároveň dobře fungovaly ve vyhledávačích. Celek působí přehledně a nenásilně vede k dalšímu kroku. Doplň vlastní text o tom, co jsi pro projekt připravila.
-          </figcaption>
-          <dialog class="lightbox lightbox-video" id="w-home">
-            <button class="lightbox-close" type="button" aria-label="Zavřít">✕</button>
-            <video data-src="img/HomeWEB.mp4" controls playsinline preload="none"></video>
-          </dialog>
-        </figure>
-      </div>
-    </div>
-    <h2>videoobsah pro sociální sítě</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus ducimus repudiandae, fuga est cumque neque perspiciatis, consectetur voluptatibus nisi, dicta laudantium necessitatibus explicabo mollitia adipisci commodi tempora asperiores sit repellat ad magnam animi reiciendis quod. Exercitationem at possimus vel ab voluptatem quidem ipsam ipsa sequi quisquam! Et fugiat debitis iusto.</p>
-    <div class="dots"></div>
-  </div>
     <script src="index.js"></script>
   </body>
 </html>

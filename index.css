@@ -2504,6 +2504,83 @@ a {
   }
 }
 
+/* Kulaté hamburger tlačítko v pravém horním rohu */
+.menu-wrap {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  width: 3.5rem;
+  min-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-1rem);
+}
+
+/* Zobrazí se na úrovni .portfolio (třídu přepíná index.js) */
+.menu-wrap.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+/* Výraznější blur u tlačítek přes obsah, aby pod nimi neprosvítal text */
+.menu-toggle,
+.menu-toggle:hover,
+.menu-panel .button,
+.menu-panel .button:hover {
+  backdrop-filter: blur(11px) saturate(1.2);
+  -webkit-backdrop-filter: blur(11px) saturate(1.2);
+  background-color: rgba(0, 0, 0, 0.18);
+}
+
+/* Rozbalovací menu pod tlačítkem */
+.menu-panel {
+  position: fixed;
+  top: 5.5rem;
+  right: 1rem;
+  z-index: 10;
+  width: min(18rem, calc(100vw - 2rem));
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.menu-panel[hidden] {
+  display: none;
+}
+
+.menu-panel .button-wrap {
+  width: 100%;
+}
+
+.menu-panel .button {
+  font-size: 1.5rem;
+}
+
+.menu-toggle {
+  width: 3.5rem;
+  height: 3.5rem;
+  min-height: 0;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.menu-toggle::after {
+  border-radius: 50%;
+}
+
+.menu-toggle svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  position: relative;
+  z-index: 2;
+}
+
 h2 {
   font-family: "gruppo", sans-serif;
   font-weight: 400;
@@ -2823,5 +2900,35 @@ h2 {
 @media only screen and (max-width: 500px) {
   .video-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Dotyková zařízení: hover neexistuje, tak se stejný efekt ukáže při stisku */
+@media (hover: none) and (pointer: coarse) {
+  .button:active {
+    transform: scale(0.975);
+    transition-duration: 150ms;
+  }
+
+  .button:active::after {
+    --angle-1: -125deg;
+  }
+
+  .button:active span::after {
+    --angle-2: -45deg;
+    background-position: 25% 50%;
+  }
+
+  .button-wrap:has(.button:active) .button-shadow {
+    filter: blur(clamp(2px, 0.0625em, 6px));
+  }
+
+  .button-wrap:has(.button:active) .button-shadow::after {
+    top: calc(var(--shadow-cuttoff-fix) - 0.875em);
+  }
+
+  .dropdown:has(.button-wrap:active) .button-wrap:not(:active) {
+    filter: blur(4px);
+    opacity: 0.6;
   }
 }
