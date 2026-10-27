@@ -2720,3 +2720,95 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
+/* Videa: malý náhled (jen metadata), po kliknutí se video otevře ve velkém okně */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.video-card {
+  margin: 0;
+  font-family: "barlow", sans-serif;
+  color: #e4f3a2;
+}
+
+.video-card figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.video-card strong {
+  display: block;
+  color: #b9ae50;
+}
+
+.video-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  border: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #070603;
+  box-shadow: 0 0.5rem 1rem rgba(239, 236, 236, 0.234);
+  cursor: pointer;
+}
+
+.video-thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(7, 6, 3, 0.65);
+  color: #b9ae50;
+  font-size: 1.2rem;
+  transition: background 0.2s;
+}
+
+.video-thumb:hover .video-play {
+  background: #b9ae50;
+  color: #070603;
+}
+
+.lightbox-video {
+  width: auto;
+  max-width: 90vw;
+}
+
+.lightbox-video video {
+  display: block;
+  max-width: 90vw;
+  max-height: 80vh;
+  margin: 0 auto;
+  border-radius: 1rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -100,11 +100,18 @@ document.querySelectorAll(".compare").forEach((box) => {
 document.querySelectorAll("[data-open]").forEach((btn) => {
   const dialog = document.getElementById(btn.dataset.open);
   btn.addEventListener("click", () => {
-    dialog.querySelectorAll("img[data-src]").forEach((img) => {
-      img.src = img.dataset.src;
-      img.removeAttribute("data-src");
+    dialog.querySelectorAll("img[data-src], video[data-src]").forEach((el) => {
+      el.src = el.dataset.src;
+      el.removeAttribute("data-src");
     });
     dialog.showModal();
+    const video = dialog.querySelector("video");
+    if (video) video.play().catch(() => {});
+  });
+  // zavření okna zastaví video
+  dialog.addEventListener("close", () => {
+    const video = dialog.querySelector("video");
+    if (video) video.pause();
   });
   dialog
     .querySelector(".lightbox-close")

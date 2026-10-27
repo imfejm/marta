@@ -95,9 +95,10 @@
           </p>
         </div>
       </div>
-    </div>
+    
     <div class="photo" id="photo">
       <h2>fotky + postprodukce</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere explicabo ipsam voluptatibus, aspernatur voluptas velit neque quae quam accusantium corporis aperiam doloremque culpa totam! Est unde quia numquam quis nihil culpa voluptates provident voluptatum aspernatur placeat reiciendis ut quisquam temporibus, consequuntur quas ea ex, nobis repellat, ratione laudantium eligendi optio!</p>
       <div class="gallery">
         <div class="gallery-item">
           <!-- Náhled (malé soubory) + tlačítko pro zvětšení -->
@@ -704,9 +705,71 @@
         </div>
       </div>
     </div>
-    <div class="video" id="video"></div>
+    <div class="video" id="video">
+      <h2>videoobsah pro sociální sítě</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus ducimus repudiandae, fuga est cumque neque perspiciatis, consectetur voluptatibus nisi, dicta laudantium necessitatibus explicabo mollitia adipisci commodi tempora asperiores sit repellat ad magnam animi reiciendis quod. Exercitationem at possimus vel ab voluptatem quidem ipsam ipsa sequi quisquam! Et fugiat debitis iusto.</p>
+      <div class="video-grid">
+        <figure class="video-card">
+          <button class="video-thumb" type="button" data-open="v-houbari" aria-label="Přehrát video: Houbari">
+            <video src="img/Houbari.mp4#t=0.5" preload="metadata" muted playsinline></video>
+            <span class="video-play" aria-hidden="true">▶</span>
+          </button>
+          <figcaption>
+            <strong>Houbari</strong>
+            Krátký popisek videa. Druhá věta popisku, doplň vlastní text.
+          </figcaption>
+          <dialog class="lightbox lightbox-video" id="v-houbari">
+            <button class="lightbox-close" type="button" aria-label="Zavřít">✕</button>
+            <video data-src="img/Houbari.mp4" controls playsinline preload="none"></video>
+          </dialog>
+        </figure>
+        <figure class="video-card">
+          <button class="video-thumb" type="button" data-open="v-exovideo" aria-label="Přehrát video: Exovideo">
+            <video src="img/Exovideo.mp4#t=0.5" preload="metadata" muted playsinline></video>
+            <span class="video-play" aria-hidden="true">▶</span>
+          </button>
+          <figcaption>
+            <strong>Exovideo</strong>
+            Krátký popisek videa. Druhá věta popisku, doplň vlastní text.
+          </figcaption>
+          <dialog class="lightbox lightbox-video" id="v-exovideo">
+            <button class="lightbox-close" type="button" aria-label="Zavřít">✕</button>
+            <video data-src="img/Exovideo.mp4" controls playsinline preload="none"></video>
+          </dialog>
+        </figure>
+        <figure class="video-card">
+          <button class="video-thumb" type="button" data-open="v-reka" aria-label="Přehrát video: Řeka">
+            <video src="img/Reka.mp4#t=0.5" preload="metadata" muted playsinline></video>
+            <span class="video-play" aria-hidden="true">▶</span>
+          </button>
+          <figcaption>
+            <strong>Řeka</strong>
+            Krátký popisek videa. Druhá věta popisku, doplň vlastní text.
+          </figcaption>
+          <dialog class="lightbox lightbox-video" id="v-reka">
+            <button class="lightbox-close" type="button" aria-label="Zavřít">✕</button>
+            <video data-src="img/Reka.mp4" controls playsinline preload="none"></video>
+          </dialog>
+        </figure>
+        <figure class="video-card">
+          <button class="video-thumb" type="button" data-open="v-vanoce" aria-label="Přehrát video: Vánoce">
+            <video src="img/Vanoce.mp4#t=0.5" preload="metadata" muted playsinline></video>
+            <span class="video-play" aria-hidden="true">▶</span>
+          </button>
+          <figcaption>
+            <strong>Vánoce</strong>
+            Krátký popisek videa. Druhá věta popisku, doplň vlastní text.
+          </figcaption>
+          <dialog class="lightbox lightbox-video" id="v-vanoce">
+            <button class="lightbox-close" type="button" aria-label="Zavřít">✕</button>
+            <video data-src="img/Vanoce.mp4" controls playsinline preload="none"></video>
+          </dialog>
+        </figure>
+      </div>
+    </div>
     <div class="web" id="web"></div>
     <div class="dots"></div>
+  </div>
     <script src="index.js"></script>
   </body>
 </html>
