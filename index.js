@@ -67,9 +67,15 @@ function light(e) {
   if (wasIdle) requestAnimationFrame(draw);
 }
 
-// pointer události pokryjí myš i dotyk
-document.addEventListener("pointermove", light);
-document.addEventListener("pointerdown", light);
+// Myš. Pointer události při dotyku zruší prohlížeč, jakmile převezme gesto
+// (scroll), proto má dotyk vlastní touch události, které chodí dál.
+document.addEventListener("mousemove", light);
+
+function lightTouch(e) {
+  for (const t of e.touches) light(t);
+}
+document.addEventListener("touchstart", lightTouch, { passive: true });
+document.addEventListener("touchmove", lightTouch, { passive: true });
 
 window.addEventListener("resize", resize);
 resize();
