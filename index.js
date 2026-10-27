@@ -80,6 +80,14 @@ document.addEventListener("touchmove", lightTouch, { passive: true });
 window.addEventListener("resize", resize);
 resize();
 
+// Tlačítko skryje obsah, aby šlo tahem prstem kreslit do teček (a vrátí ho)
+const playBtn = document.getElementById("play");
+playBtn.addEventListener("click", () => {
+  const on = document.documentElement.classList.toggle("play");
+  playBtn.textContent = on ? "zpět na web" : "chci si jen hrát s tečkami";
+  window.scrollTo(0, 0);
+});
+
 // Porovnání před / po: hodnota posuvníku řídí CSS proměnnou --pos
 document.querySelectorAll(".compare").forEach((box) => {
   const range = box.querySelector(".compare-range");

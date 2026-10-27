@@ -3,7 +3,24 @@ html {
   overflow-x: hidden; /* Zakáže horizontální posuvník */
   width: 100vw; /* Zabrání roztažení */
   scroll-behavior: smooth;
-  touch-action: none; /* tah prstem kreslí do teček, místo aby scrolloval */
+}
+
+/* Režim "jen si hrát": obsah je skrytý a tah prstem kreslí do teček */
+html.play {
+  touch-action: none;
+}
+html.play .portfolio,
+html.play .photo,
+html.play .marta-image,
+html.play .titleMenu h1,
+html.play .dropdown .button-wrap:not(.play-wrap) {
+  display: none;
+}
+html.play .titleMenu {
+  grid-template-columns: 1fr;
+}
+html.play .titleMenu .dropdown {
+  grid-column: 1;
 }
 *,
 ::after,
@@ -14,6 +31,17 @@ html {
 body {
   background: #000;
   overflow: hidden;
+}
+
+/* Volný prostor na konci stránky, kde si lze hrát s tečkami */
+.dots {
+  height: 40vh;
+}
+
+/* Úvod a volný prostor: tah prstem kreslí do teček. Od portfolia dál se scrolluje. */
+.titleMenu,
+.dots {
+  touch-action: none;
 }
 
 /* Čtvercová síť teček (vykresluje index.js) */
