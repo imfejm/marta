@@ -82,9 +82,12 @@ resize();
 
 // Tlačítko skryje obsah, aby šlo tahem prstem kreslit do teček (a vrátí ho)
 const playBtn = document.getElementById("play");
+function setPlay(on) {
+  document.documentElement.classList.toggle("play", on);
+  updateMenuButton();
+}
 playBtn.addEventListener("click", () => {
-  const on = document.documentElement.classList.toggle("play");
-  playBtn.textContent = on ? "zpět na web" : "chci si jen hrát s tečkami";
+  setPlay(true);
   window.scrollTo(0, 0);
 });
 
@@ -126,7 +129,10 @@ document.querySelectorAll("[data-open]").forEach((btn) => {
 const menuWrap = document.querySelector(".menu-wrap");
 const portfolio = document.querySelector(".portfolio");
 function updateMenuButton() {
-  const visible = portfolio.getBoundingClientRect().top <= 0;
+  // v režimu hraní je portfolio skryté, hamburger je tam jediná cesta zpět
+  const visible =
+    document.documentElement.classList.contains("play") ||
+    portfolio.getBoundingClientRect().top <= 0;
   menuWrap.classList.toggle("visible", visible);
 }
 window.addEventListener("scroll", updateMenuButton, { passive: true });
@@ -154,6 +160,8 @@ menuToggle.addEventListener("click", () => {
 menuPanel.addEventListener("click", (e) => {
   const btn = e.target.closest(".button");
   if (!btn) return;
+  // v režimu hraní je portfolio skryté, odkaz ho musí nejdřív vrátit
+  if (btn.matches("a[href^='#']")) setPlay(false);
   orbit(btn);
   // menu se zavře až po doběhnutí animace, ať je vidět
   setTimeout(() => setMenu(false), ORBIT_MS);
@@ -169,7 +177,8 @@ window.addEventListener("scroll", () => {
   if (!menuWrap.classList.contains("visible")) setMenu(false);
 }, { passive: true });
 
-// Tlačítko "nahoru" v menu vrátí na začátek stránky
+// Tlačítko "nahoru" v menu vrátí na nadpis h1 (a případně ukončí režim hraní)
 document.getElementById("to-top").addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  setPlay(false);
+  document.querySelector(".titleMenu h1").scrollIntoView({ behavior: "smooth" });
 });

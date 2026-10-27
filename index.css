@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   overflow-x: hidden; /* Zakáže horizontální posuvník */
-  width: 100vw; /* Zabrání roztažení */
+  width: 100%; /* 100vw by zahrnoval i šířku posuvníku */
   scroll-behavior: smooth;
 }
 
@@ -13,7 +13,7 @@ html.play .portfolio,
 html.play .photo,
 html.play .marta-image,
 html.play .titleMenu h1,
-html.play .dropdown .button-wrap:not(.play-wrap) {
+html.play .dropdown .button-wrap {
   display: none;
 }
 html.play .titleMenu {
@@ -48,7 +48,7 @@ body {
 #dots {
   position: fixed;
   inset: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   z-index: -1;
   pointer-events: none;
@@ -2188,9 +2188,11 @@ ul {
 }
 
 /* Blur the other buttons while one is hovered */
-.dropdown:has(.button-wrap:hover) .button-wrap:not(:hover) {
-  filter: blur(4px);
-  opacity: 0.6;
+@media (hover: hover) and (pointer: fine) {
+  .dropdown:has(.button-wrap:hover) .button-wrap:not(:hover) {
+    filter: blur(4px);
+    opacity: 0.6;
+  }
 }
 a {
   text-decoration: none;
