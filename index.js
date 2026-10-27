@@ -51,8 +51,8 @@ function draw(now) {
   if (lit.size) requestAnimationFrame(draw);
 }
 
-document.addEventListener("mousemove", (e) => {
-  // Čtyři rohy buňky, ve které je kurzor, se rozsvítí vždy.
+function light(e) {
+  // Čtyři rohy buňky, ve které je kurzor (nebo prst), se rozsvítí vždy.
   const c0 = Math.floor(e.clientX / SPACING);
   const r0 = Math.floor(e.clientY / SPACING);
   const now = performance.now();
@@ -65,7 +65,11 @@ document.addEventListener("mousemove", (e) => {
     }
   }
   if (wasIdle) requestAnimationFrame(draw);
-});
+}
+
+// pointer události pokryjí myš i dotyk
+document.addEventListener("pointermove", light);
+document.addEventListener("pointerdown", light);
 
 window.addEventListener("resize", resize);
 resize();
