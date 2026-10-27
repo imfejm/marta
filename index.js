@@ -140,9 +140,23 @@ function setMenu(open) {
   menuPanel.hidden = !open;
   menuToggle.setAttribute("aria-expanded", String(open));
 }
-menuToggle.addEventListener("click", () => setMenu(menuPanel.hidden));
+// Jedno oběhnutí světla po borderu při kliknutí (CSS jen na mobilu)
+function orbit(btn) {
+  btn.classList.remove("orbit");
+  void btn.offsetWidth; // restart animace
+  btn.classList.add("orbit");
+}
+const ORBIT_MS = 900;
+menuToggle.addEventListener("click", () => {
+  orbit(menuToggle);
+  setMenu(menuPanel.hidden);
+});
 menuPanel.addEventListener("click", (e) => {
-  if (e.target.closest("a")) setMenu(false);
+  const btn = e.target.closest(".button");
+  if (!btn) return;
+  orbit(btn);
+  // menu se zavře až po doběhnutí animace, ať je vidět
+  setTimeout(() => setMenu(false), ORBIT_MS);
 });
 document.addEventListener("click", (e) => {
   if (!e.target.closest(".menu-wrap, .menu-panel")) setMenu(false);
@@ -158,5 +172,4 @@ window.addEventListener("scroll", () => {
 // Tlačítko "nahoru" v menu vrátí na začátek stránky
 document.getElementById("to-top").addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
-  setMenu(false);
 });

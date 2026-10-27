@@ -2903,32 +2903,17 @@ h2 {
   }
 }
 
-/* Dotyková zařízení: hover neexistuje, tak se stejný efekt ukáže při stisku */
-@media (hover: none) and (pointer: coarse) {
-  .button:active {
-    transform: scale(0.975);
-    transition-duration: 150ms;
+/* Mobilní menu: při kliknutí jednou oběhne světlo po borderu tlačítka */
+@keyframes border-orbit {
+  to {
+    --angle-1: 285deg;
   }
+}
 
-  .button:active::after {
-    --angle-1: -125deg;
-  }
-
-  .button:active span::after {
-    --angle-2: -45deg;
-    background-position: 25% 50%;
-  }
-
-  .button-wrap:has(.button:active) .button-shadow {
-    filter: blur(clamp(2px, 0.0625em, 6px));
-  }
-
-  .button-wrap:has(.button:active) .button-shadow::after {
-    top: calc(var(--shadow-cuttoff-fix) - 0.875em);
-  }
-
-  .dropdown:has(.button-wrap:active) .button-wrap:not(:active) {
-    filter: blur(4px);
-    opacity: 0.6;
+@media only screen and (max-width: 800px) {
+  .menu-toggle.orbit::after,
+  .menu-panel .button.orbit::after {
+    --angle-1: -75deg;
+    animation: border-orbit 0.9s ease-in-out;
   }
 }
