@@ -188,3 +188,16 @@ document.getElementById("to-top").addEventListener("click", () => {
     .querySelector(".titleMenu h1")
     .scrollIntoView({ behavior: "smooth" });
 });
+
+// Nedělitelná mezera za jednopísmennými předložkami a spojkami (k, s, v, z, o, u, a, i) a za „na“,
+// aby žádná nezůstala na konci řádku
+const ORPHAN = /(?<=^|[\s(„"])([ksvzouai]|na)[ \t\n]+(?=\S)/gi;
+const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+  acceptNode: (node) =>
+    node.parentElement.closest("script, style, textarea, noscript")
+      ? NodeFilter.FILTER_REJECT
+      : NodeFilter.FILTER_ACCEPT,
+});
+for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+  node.nodeValue = node.nodeValue.replace(ORPHAN, "$1\u00A0");
+}

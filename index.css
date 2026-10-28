@@ -2812,6 +2812,9 @@ h2 {
 }
 
 /* Videa: malý náhled (jen metadata), po kliknutí se video otevře ve velkém okně */
+.video p{
+  padding-bottom: 2rem;
+}
 .video-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -2833,11 +2836,12 @@ h2 {
   padding-bottom:4.5rem;
 }
 
-.info {
+.video .info {
   color: #b9ae50;
   font-weight: 500;
   font-style: normal;
   padding-top: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .video-card strong {
@@ -2948,4 +2952,17 @@ h2 {
     --angle-1: -75deg;
     animation: border-orbit 0.9s ease-in-out;
   }
+}
+
+/* Hezčí zalamování: bez osamocených slov na posledním řádku */
+p,
+figcaption,
+li {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
