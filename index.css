@@ -749,14 +749,7 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  /* Fotky i videa mají na mobilu stejnou šířku (viz i .video-card) */
-  .gallery-item {
-    width: 100%;
-    max-width: 240px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
+  /* Fotky na mobilu na celou šířku textu (jako caption) */
   .gallery-item .compare-small {
     max-width: none;
   }
@@ -1000,14 +993,10 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .video-card {
-    max-width: 240px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .web-grid .video-card {
     max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
