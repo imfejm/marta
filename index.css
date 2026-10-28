@@ -1015,6 +1015,13 @@ h2 {
   }
 }
 
+footer{
+  font-family: "barlow", sans-serif;
+  color: #b9ae50;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+}
 /* Hezčí zalamování: bez osamocených slov na posledním řádku */
 p,
 figcaption,
