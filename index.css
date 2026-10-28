@@ -97,7 +97,7 @@ body {
     transform: translateY(0);
   }
 }
- .titleMenu {
+.titleMenu {
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: end;
@@ -627,14 +627,16 @@ h2 {
   font-size: 1.2rem;
 }
 
-.caption {
+.portfolio .caption {
   padding-bottom: 1.5rem;
+  font-size: 1.2rem;
 }
 .text,
 .photo,
 .video,
 .web {
-  padding-bottom: 4rem;
+  /* Mezi sekcemi výrazně víc než uvnitř nich (zákon blízkosti), škála po 8 px */
+  padding-bottom: clamp(6rem, 4rem + 5vw, 8rem);
 }
 @media only screen and (max-width: 600px) {
   .portfolio {
@@ -730,6 +732,9 @@ h2 {
 
 .gallery-portrait {
   grid-template-columns: repeat(5, 1fr);
+}
+
+.gallery + .gallery {
   margin-top: 1.5rem;
 }
 
@@ -741,7 +746,7 @@ h2 {
 
 @media only screen and (max-width: 600px) {
   .gallery-portrait {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 
@@ -850,13 +855,16 @@ h2 {
 }
 
 /* Videa: malý náhled (jen metadata), po kliknutí se video otevře ve velkém okně */
-.video p .web p {
+.video p,
+.web p {
   padding-bottom: 2rem;
+  font-size: 16px;
 }
 .video-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  /* velká mezera jen mezi řádky, pod posledním popiskem nic nezůstane */
+  gap: 4.5rem 1.5rem;
   margin-top: 1.5rem;
 }
 
@@ -868,10 +876,9 @@ h2 {
 
 .video-card figcaption {
   margin-top: 0.7rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.4;
   font-style: italic;
-  padding-bottom: 4.5rem;
   padding-top: 1rem;
 }
 
@@ -879,6 +886,7 @@ h2 {
   color: #b9ae50;
   font-weight: 500;
   font-style: normal;
+  font-size: 16px;
 
   padding-bottom: 0.5rem;
 }
@@ -962,6 +970,16 @@ h2 {
 
   .web-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Weby: stejné mezery mezi odkazem, popisem a dalším webem jako u videí */
+  .web .info {
+    display: block;
+    padding-bottom: 0.5rem;
+  }
+
+  .web .webinfo {
+    padding: 0;
   }
 }
 
