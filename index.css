@@ -478,6 +478,57 @@ a {
   }
 }
 
+/* Mobilní úvod: h1, pak IntroMOB, pak dropdown pod sebou */
+.titleMenu .intro-mob {
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .titleMenu {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .titleMenu .intro-desktop {
+    display: none;
+  }
+
+  .titleMenu .intro-mob {
+    display: block;
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+  }
+
+  .titleMenu h1 {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 1rem 1rem 0;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .titleMenu .dropdown {
+    grid-column: 1;
+    grid-row: 3;
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .dropdown .button-wrap {
+    width: min(100%, 20rem);
+    margin-left: 0;
+  }
+
+  .dropdown .button {
+    font-size: 1.5rem;
+  }
+}
+
+html.play .titleMenu .intro-mob {
+  display: none;
+}
+
 /* Kulaté hamburger tlačítko v pravém horním rohu */
 .menu-wrap {
   position: fixed;
