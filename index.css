@@ -748,6 +748,14 @@ h2 {
   .gallery-portrait {
     grid-template-columns: 1fr;
   }
+
+  /* Úzké fotky stejně široké jako videa */
+  .gallery-portrait .gallery-item {
+    max-width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
 }
 
 .lightbox-portrait {
