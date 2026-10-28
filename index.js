@@ -173,12 +173,18 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") setMenu(false);
 });
 // při návratu nahoru (tlačítko zmizí) se menu zavře
-window.addEventListener("scroll", () => {
-  if (!menuWrap.classList.contains("visible")) setMenu(false);
-}, { passive: true });
+window.addEventListener(
+  "scroll",
+  () => {
+    if (!menuWrap.classList.contains("visible")) setMenu(false);
+  },
+  { passive: true },
+);
 
 // Tlačítko "nahoru" v menu vrátí na nadpis h1 (a případně ukončí režim hraní)
 document.getElementById("to-top").addEventListener("click", () => {
   setPlay(false);
-  document.querySelector(".titleMenu h1").scrollIntoView({ behavior: "smooth" });
+  document
+    .querySelector(".titleMenu h1")
+    .scrollIntoView({ behavior: "smooth" });
 });
