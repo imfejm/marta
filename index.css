@@ -508,13 +508,13 @@ a {
     text-align: center;
   }
 
-  /* Scroll povolen všude v úvodu, jen dropdown dál kreslí do teček */
-  .titleMenu {
+  /* Scroll povolen všude v úvodu; tečky se kreslí přes touch události i při scrollu */
+  .titleMenu,
+  .titleMenu .dropdown {
     touch-action: pan-y;
   }
 
   .titleMenu .dropdown {
-    touch-action: none;
     grid-column: 1;
     grid-row: 3;
     padding: 1rem;
