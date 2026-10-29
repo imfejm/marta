@@ -99,10 +99,24 @@ document.querySelectorAll(".compare").forEach((box) => {
   });
 });
 
+// Při otevřeném zvětšení (zvlášť při celé obrazovce videa) některá zařízení
+// stránku pod ním poposkočí nahoru, proto držíme původní pozici scrollu.
+let lockedY = null;
+function restoreScroll() {
+  if (lockedY !== null && Math.abs(window.scrollY - lockedY) > 1) {
+    window.scrollTo({ top: lockedY, behavior: "instant" });
+  }
+}
+window.addEventListener("scroll", restoreScroll, { passive: true });
+window.addEventListener("resize", restoreScroll);
+document.addEventListener("fullscreenchange", restoreScroll);
+document.addEventListener("webkitfullscreenchange", restoreScroll);
+
 // Zvětšení: velké fotky se načtou až při prvním otevření
 document.querySelectorAll("[data-open]").forEach((btn) => {
   const dialog = document.getElementById(btn.dataset.open);
   btn.addEventListener("click", () => {
+    lockedY = window.scrollY;
     dialog.querySelectorAll("img[data-src], video[data-src]").forEach((el) => {
       el.src = el.dataset.src;
       el.removeAttribute("data-src");
@@ -113,6 +127,8 @@ document.querySelectorAll("[data-open]").forEach((btn) => {
   });
   // zavření okna zastaví video
   dialog.addEventListener("close", () => {
+    restoreScroll();
+    lockedY = null;
     const video = dialog.querySelector("video");
     if (video) video.pause();
   });
